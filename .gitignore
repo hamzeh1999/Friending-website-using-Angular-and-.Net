@@ -385,7 +385,6 @@ FodyWeavers.xsd
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-appsettings.json
 *.code-workspace
 
 
@@ -477,3 +476,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+
+appsettings.json

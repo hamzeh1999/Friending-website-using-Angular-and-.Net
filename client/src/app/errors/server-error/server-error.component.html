@@ -1,0 +1,17 @@
+<h4 >Internal Server Error - Refeshing the page wil disapper the error!!</h4>
+
+<ng-container *ngIf="error">.
+
+    <h5 class="text-danger">Error: {{error.message}}</h5>
+    <p class="font-weight-bold">If you are seeing this, ANgular is not blame </p>
+    <p>What to do next ? </p>
+    <ol>
+        <li>Open the website from Chrom dev tool</li>
+        <li>Inspect the network tab </li>
+        <li>check the failiung request </li>
+        <li>Examine the request URL - make sure it is correct </li>
+        <li>Repreduce the error in Postman program </li>
+    </ol>
+    <p>Following the stack trace, here where you investigation will start </p>
+    <code class="mt-5" style="background-color: whitesmoke;">{{error.details}}</code>
+</ng-container>

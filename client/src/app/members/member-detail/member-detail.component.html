@@ -1,0 +1,77 @@
+<!-- <h1 *ngIf="memberId">{{memberId.knownAs}}</h1> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/timeago-simple@1.2.4/dist/timeago.js" async></script>
+ 
+<!--Minified version-->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/timeago-simple@1.2.4/dist/timeago.min.js" async></script>
+ 
+<div class="row" *ngIf="memberId">
+    <div class="col-4">
+        <div class="card">
+          
+            <img src="{{memberId.photoUrl || './assets/user.png'}}  " alt="{{memberId.knownAs}}"
+                class= "circular_image card-img-top img-thumbnail">
+            
+            <div class="card-body">
+                <div>
+                    <strong>Last Active :</strong>
+                    <p>{{memberId.lastActivity|amTimeAgo:true}}</p>
+                </div>
+<!-- | amLocal | amDateFormat: 'YYYY-MM-DD HH:mm' (OR) amTimeAgo:true -->
+                <div>
+                    <strong>Location :</strong>
+                    <p>{{memberId.city}} , {{memberId.country}}</p>
+                </div>
+
+
+                <div>
+                    <strong>Age :</strong>
+                    <p>{{memberId.age}}</p>
+                </div>
+
+                <div>
+                    <strong>Member Since :</strong>
+                    <p>{{memberId.created | amLocal | amDateFormat: 'YYYY-MM-DD'}}</p>
+                </div>
+
+                <div class="card-footer">
+                    <div class="btn-group d-flex">
+                        <button class="btn btn-primary">Like</button>
+                        <button class="btn btn-success">Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <tabset class="member-tabset">
+            <tab heading="About {{memberId.knownAs}}">
+                <h4>Description</h4>
+                <p>{{memberId.introduction}}</p>
+                <h4>Looking For</h4>
+                <p>{{memberId.lookingFor}}</p>
+            </tab>
+
+            <tab heading="Intrests">
+                <h5>I am really care about  : </h5>
+                <p>{{memberId.interests}}</p>
+
+            </tab>
+
+
+            <tab heading="photos">
+                <ngx-gallery style="display: inline-block; margin-bottom: 20px;" [options]="galleryOptions" class="ngx-gallery" [images]="galleryImages"></ngx-gallery>
+            </tab>
+
+
+            <tab heading="Mesages">
+             <p>Mesages will go here</p>
+            </tab>
+
+
+          
+
+        </tabset>
+    </div>
+
+
+</div>

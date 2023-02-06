@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221130213012_initialCreate")]
+    [Migration("20230103224516_initialCreate")]
     partial class initialCreate
     {
         /// <inheritdoc />
@@ -25,12 +25,18 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<byte[]>("passwordHash")
+                        .HasColumnType("BLOB");
+
+                    b.Property<byte[]>("passwordSalt")
+                        .HasColumnType("BLOB");
+
                     b.Property<string>("userName")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("AppUser");
                 });
 #pragma warning restore 612, 618
         }

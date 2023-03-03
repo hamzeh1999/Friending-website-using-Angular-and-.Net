@@ -16,11 +16,11 @@ namespace API.healper
            //int  userId=7;
             if(!resultContext.HttpContext.User.Identity.IsAuthenticated) return ;
             var userId=resultContext.HttpContext.User.getUserId();
-           // Console.WriteLine("hhhhhhhhhhhhhhhhhhhhhhhh"+userId.ToString());
-            var repo=resultContext.HttpContext.RequestServices.GetService<IUserRepository>();
-            var user=await repo.getUserByIdAsync(userId);
-            user.lastActivity=DateTime.Now;
-            await repo.saveAllAsync();
+            Console.WriteLine("Hamzeh Ghabashneh to confirm it is me 😂");
+            var repo=resultContext.HttpContext.RequestServices.GetService<IunitOfWork>();
+            var user=await repo.UserRepository.getUserByIdAsync(userId);
+            user.lastActivity=DateTime.UtcNow;
+            await repo.Complete();
         }
     }
 }

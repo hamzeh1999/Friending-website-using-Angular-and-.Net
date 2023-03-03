@@ -15,5 +15,6 @@ export interface Memeber {
     country: string;
     photos: Photo[];
     city: string;
+    
   }
   

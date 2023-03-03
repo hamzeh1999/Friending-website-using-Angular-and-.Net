@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.healper
 {
-    public class UserParams
+    public class UserParams:PaginationParams
     {
         public string currentUserName { set; get; }
 
@@ -15,14 +15,7 @@ namespace API.healper
 
         public string orderBy{get; set;}="lastActive";
 
-        private const int MaxPageSize = 50;
-        public int pageNumber { get; set; } = 1;
-        private int _pageSize = 10;
-        public int pageSize
-        {
-            get => _pageSize;
-            set => _pageSize = (value > MaxPageSize) ? MaxPageSize : value;
-        }
+       
 
     }
 }

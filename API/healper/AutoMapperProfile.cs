@@ -16,14 +16,23 @@ namespace API.healper
 
             CreateMap<PhotoDTO, Photo>();
             CreateMap<Photo, PhotoDTO>();
-            CreateMap<updateMemberDTO,AppUser>();
+            CreateMap<updateMemberDTO, AppUser>();
             CreateMap<AppUser, MemberDTO>()
-            .ForMember(dest => dest.photoUrl, opt => opt.MapFrom(src => src.photos.FirstOrDefault(x =>x.isMan).url))
-            .ForMember(dist=>dist.age,opt=>opt.MapFrom(src=>src.dateOfBirth.calculateAge()));
+            .ForMember(dest => dest.photoUrl, opt => opt.MapFrom(src => src.photos.FirstOrDefault(x => x.isMan).url))
+            .ForMember(dist => dist.age, opt => opt.MapFrom(src => src.dateOfBirth.calculateAge()));
             // CreateMap<MemberDTO, AppUser>();
-            CreateMap<AppUser,RegisterDto>();
+            CreateMap<AppUser, RegisterDto>();
 
-            CreateMap<RegisterDto,AppUser>();
+            CreateMap<RegisterDto, AppUser>();
+            CreateMap<Message, MessageDTO>()
+            .ForMember(dis => dis.senderPhotoUrl, 
+            opt => opt.MapFrom(src => src.sender.photos.FirstOrDefault(x => x.isMan).url))
+            .ForMember(dis => dis.recipientPhotoUrl, 
+            opt => opt.MapFrom(src => src.recipient.photos.FirstOrDefault(x => x.isMan).url));
+             CreateMap<MessageDTO, Message>();
+            // CreateMap<DateTime,DateTime>().
+            // ConvertUsing(d=>DateTime.SpecifyKind(d,DateTimeKind.Utc));
+    
         }
 
         //  int getAge(DateTime dob)

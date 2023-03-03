@@ -30,6 +30,14 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './_directive/has-role.directive';
+import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { RolesModalComponent } from './models/roles-modal/roles-modal.component';
+import { ConfirmDialogComponent } from './_models/confirm-dialog/confirm-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +55,15 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     MemberEditComponent,
     PhotoEditorComponent,
     TextInputComponent,
-    DateInputComponent
+    DateInputComponent,
+    MemberMessagesComponent,
+    AdminPanelComponent,
+    HasRoleDirective,
+    PhotoManagementComponent,
+    UserManagementComponent,
+    RolesModalComponent,
+    ConfirmDialogComponent
+  
   ],
   imports: [
     ReactiveFormsModule, 

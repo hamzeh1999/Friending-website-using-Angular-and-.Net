@@ -1,22 +1,22 @@
-<!-- <h1 *ngIf="memberId">{{memberId.knownAs}}</h1> -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/timeago-simple@1.2.4/dist/timeago.js" async></script>
- 
-<!--Minified version-->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/timeago-simple@1.2.4/dist/timeago.min.js" async></script>
- 
-<div class="row" *ngIf="memberId">
+<div class="row">
     <div class="col-4">
         <div class="card">
-          
+
             <img src="{{memberId.photoUrl || './assets/user.png'}}  " alt="{{memberId.knownAs}}"
-                class= "circular_image card-img-top img-thumbnail">
-            
+                class="circular_image card-img-top img-thumbnail">
+
             <div class="card-body">
+                <div class="mb-2" *ngIf="(presenceService.onlineUser$ | async).includes(memberId.userName)">
+            
+                <i class="fa fa-user-circle text-success"> </i> Online now 
+                </div>
                 <div>
                     <strong>Last Active :</strong>
-                    <p>{{memberId.lastActivity|amTimeAgo:true}}</p>
+                    <p>{{memberId.lastActivity | amTimeAgo:true }}</p>
+              
+
                 </div>
-<!-- | amLocal | amDateFormat: 'YYYY-MM-DD HH:mm' (OR) amTimeAgo:true -->
+                <!-- | amLocal | amDateFormat: 'YYYY-MM-DD HH:mm' (OR) amTimeAgo:true -->
                 <div>
                     <strong>Location :</strong>
                     <p>{{memberId.city}} , {{memberId.country}}</p>
@@ -36,39 +36,40 @@
                 <div class="card-footer">
                     <div class="btn-group d-flex">
                         <button class="btn btn-primary">Like</button>
-                        <button class="btn btn-success">Message</button>
+                        <button (click)="selectTab(3)" class="btn btn-success">Message</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-8">
-        <tabset class="member-tabset">
-            <tab heading="About {{memberId.knownAs}}">
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading="About {{memberId.knownAs}}" (selectTab)="onTabActivated($event)">
                 <h4>Description</h4>
                 <p>{{memberId.introduction}}</p>
                 <h4>Looking For</h4>
                 <p>{{memberId.lookingFor}}</p>
             </tab>
 
-            <tab heading="Intrests">
-                <h5>I am really care about  : </h5>
+            <tab heading="Intrests" (selectTab)="onTabActivated($event)">
+                <h5>I am really care about : </h5>
                 <p>{{memberId.interests}}</p>
 
             </tab>
 
 
-            <tab heading="photos">
-                <ngx-gallery style="display: inline-block; margin-bottom: 20px;" [options]="galleryOptions" class="ngx-gallery" [images]="galleryImages"></ngx-gallery>
+            <tab heading="photos" (selectTab)="onTabActivated($event)">
+                <ngx-gallery style="display: inline-block; margin-bottom: 20px;" [options]="galleryOptions"
+                    class="ngx-gallery" [images]="galleryImages"></ngx-gallery>
             </tab>
 
 
-            <tab heading="Mesages">
-             <p>Mesages will go here</p>
+            <tab heading="Mesages" (selectTab)="onTabActivated($event)">
+                <app-member-messages [userName]="memberId.userName" ></app-member-messages>
             </tab>
 
 
-          
+
 
         </tabset>
     </div>

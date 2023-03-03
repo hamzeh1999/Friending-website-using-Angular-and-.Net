@@ -9,6 +9,8 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 // import{ timeagoSimple } from '../../../node_modules/timeago-simple'
 import { MomentModule } from 'ngx-moment';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { MomentModule } from 'ngx-moment';
       preventDuplicates: false,    }),
       TabsModule.forRoot(),
       NgxGalleryModule,
+      ModalModule.forRoot(),
          
 
   ],
@@ -40,7 +43,8 @@ import { MomentModule } from 'ngx-moment';
     BsDatepickerModule,
     PaginationModule,
     ButtonsModule,
-    MomentModule
+    MomentModule,
+    ModalModule
 
   ]
 })

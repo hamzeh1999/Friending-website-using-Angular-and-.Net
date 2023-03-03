@@ -34,6 +34,10 @@
                     <strong>Member Since :</strong>
                     <p>{{memberId.created | amLocal | amDateFormat: 'YYYY-MM-DD'}}</p>
                 </div>
+                <div>
+                    <strong>Gender :</strong>
+                    <p>{{memberId.gender}}</p>
+                </div>
 
                 <div class="card-footer">
                     <button [disabled]="!editForm.dirty" form="editForm" type="submit"
@@ -44,7 +48,7 @@
     </div>
     <div class="col-8">
         <tabset class="member-tabset">
-            <tab heading="About {{memberId.knownAs}}">
+            <tab heading="About {{memberId.knownAs || memberId.userName}}">
                 <form id="editForm" #editForm='ngForm' (ngSubmit)="updateMember()">
                     <h4>Description</h4>
                     <textarea class="form-control" [(ngModel)]="memberId.introduction" name="introduction"
@@ -61,7 +65,17 @@
                         <input [(ngModel)]="memberId.city" name="city" type="text" class="form-control mx-2">
                         <label for="country">Country:</label>
                         <input [(ngModel)]="memberId.country" name="country" type="text" class="form-control mx-2">
+                   
                     </div>
+                    <div class="form-inline">  
+                        <label for="gender">Gender :</label>
+                        <select  class="form-control mx-2"  [(ngModel)]="memberId.gender" name="gender" >
+                            <option  value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        <label for="knownAs">Known AS :</label>
+                        <input [(ngModel)]="memberId.knownAs" name="knownAs" type="text" class="form-control mx-2">
+                          </div> 
                 </form>
             </tab>
 

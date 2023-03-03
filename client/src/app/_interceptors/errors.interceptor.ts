@@ -33,13 +33,26 @@ export class ErrorsInterceptor implements HttpInterceptor {
                // throw modelStatusError.flat();
 
               }
-              else {
-                this.toast.error(err.error, err.statusText);
+              else if(typeof(err.error)=="object") {
+                this.toast.error(err.statusText, err.status);
                 console.log("in ELSE in interceptors page");
+
+              }
+              else{
+                this.toast.error(err.error,err.status);
               }
               break;
             case 401:
-              this.toast.error(err.error, err.statusText);
+
+            if(typeof(err.error)=="object") {
+              this.toast.error(err.statusText, err.status);
+              console.log("in ELSE in interceptors page");
+
+            }
+            else{
+              this.toast.error(err.error,err.status);
+            }
+              // this.toast.error(err.statusText, err.status);
               break;
             case 404:
               this.router.navigateByUrl('/not-found');

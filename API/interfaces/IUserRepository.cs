@@ -18,6 +18,6 @@ namespace API.interfaces
         public  Task<MemberDTO> getMemberAsync(string userName);
         public  Task<AppUser> getUserByIdAsync(int id );
         Task<AppUser> getUserByUserNameAsync(string userName);
-        Task<bool> saveAllAsync();
+        Task<string>getUserGender(string username);
     }
 }

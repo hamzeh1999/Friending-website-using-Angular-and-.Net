@@ -70,7 +70,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AppUser");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("API.entities.Photo", b =>

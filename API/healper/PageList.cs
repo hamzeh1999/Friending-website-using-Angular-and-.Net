@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.healper
 {
-    public class PageList<T> : List<T>
+    public class  PageList<T> : List<T>
     {
 
 

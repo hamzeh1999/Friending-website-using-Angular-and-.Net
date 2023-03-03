@@ -2,23 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Data;
 using API.Extensions;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.entities
 {
-    public class AppUser
+    public class AppUser:IdentityUser<int>
     {
-        public int Id { get; set; }
-        public string userName { get; set; }
-
-        // public int age { get; set; }
+       
+        
+        // public int Id { get; set; }
+        // public string   UserName { get; set; } 
 
         
 
-        public byte[] passwordHash { get; set; }
 
-        public byte[] passwordSalt { get; set; }
+        // public byte[] PasswordHash { get; set; }
+
+        // public byte[] passwordSalt { get; set; }
+
 
         public DateTime created { get; set; } = DateTime.Now;
 
@@ -45,17 +49,16 @@ namespace API.entities
 
         public string city { get; set; }
 
+        public ICollection<UserLike> likedByUsers { get; set; }
+        public ICollection<UserLike> likedUsers { set; get; }
 
 
-        // public int getAge()
-        // {
-        //     // var today = DateTime.Today;
-        //     // var age = DateTime.Today.Year - dateOfBirth.Year;
-        //     // if (dateOfBirth.Date > DateTime.Today.AddYears(-age)) age--;
-        //     // return age;
-        //      return dateOfBirth.calculateAge();
-        //    // return 20;
-        // }
 
+        public ICollection<Message> messageSent { get; set; }
+        public ICollection<Message> messageReceived { get; set; }
+
+        public ICollection<AppUserRole> UserRoles { get; set; }
+
+        // public ICollection<AppUserRole> UserRoles{get; set;}
     }
 }
